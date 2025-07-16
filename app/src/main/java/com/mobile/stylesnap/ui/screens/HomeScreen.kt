@@ -30,13 +30,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.mobile.stylesnap.ImagePickerHelper
 import com.mobile.stylesnap.ImageSaver
+import com.mobile.stylesnap.R
 import com.mobile.stylesnap.StyleModelList
+import com.mobile.stylesnap.ui.components.CustomButton
 import com.mobile.stylesnap.ui.components.Header
 import com.mobile.stylesnap.viewmodels.StyleViewModel
 
@@ -78,21 +82,31 @@ fun HomeScreen(viewModel: StyleViewModel) {
                     .padding(16.dp)
             ) {
 
-                originalImage?.let {
+                if (originalImage != null) {
                     Image(
-                        bitmap = it.asImageBitmap(), contentDescription = null,
+                        bitmap = originalImage!!.asImageBitmap(),
+                        contentDescription = null,
                         modifier = Modifier
                             .height(200.dp)
                             .fillMaxWidth()
                     )
-                }
-                Spacer(modifier = Modifier.height(16.dp))
-                Button(onClick = { imagePickerLauncher.launch("image/*") }) {
-                    Text("Fotoğraf Seç")
+                } else {
+                    Box(modifier = Modifier.fillMaxWidth().height(200.dp), contentAlignment = Alignment.Center){
+                        Image(
+                            painter = painterResource(id = R.drawable.gallery),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .height(100.dp)
+                                .fillMaxWidth()
+                        )
+                    }
+
                 }
 
+                //  Spacer(modifier = Modifier.height(16.dp))
+                CustomButton(onClick = { imagePickerLauncher.launch("image/*") }, text = "Fotoğraf Seç")
 
-                Spacer(modifier = Modifier.height(16.dp))
+             //   Spacer(modifier = Modifier.height(16.dp))
 
                 Text("Stil Seç:")
                 Row {
