@@ -1,4 +1,4 @@
-<img width="1080" height="2424" alt="Screenshot_20250719_014447" src="https://github.com/user-attachments/assets/51330943-0a1a-4922-a43f-cc4a2389275a" /># 🎨 Style Snap
+🎨 Style Snap
 
 Style Snap, kullanıcıların fotoğraflarını seçip hazır stil transfer modelleriyle (örneğin `Candy`) sanat eseri gibi dönüştürebildiği bir Android uygulamasıdır. Uygulama TensorFlow Lite (TFLite) kullanılarak geliştirilmiştir.
 
