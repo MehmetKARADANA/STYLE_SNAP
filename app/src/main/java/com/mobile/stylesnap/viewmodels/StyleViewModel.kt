@@ -5,12 +5,13 @@ import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mobile.stylesnap.repositorys.StyleTransferRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 
-class StyleViewModel(private val context: Context) : ViewModel() {
+class StyleViewModel(context: Context) : ViewModel() {
 
     private val repository = StyleTransferRepository(context)
 
@@ -29,7 +30,7 @@ class StyleViewModel(private val context: Context) : ViewModel() {
     fun applyStyle(modelFileName: String) {
         val bitmap = _originalBitmap.value ?: return
 
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.Default) {
             _isProcessing.value = true
             val output = repository.applyStyle(bitmap, modelFileName)
             _stylizedBitmap.value = output
