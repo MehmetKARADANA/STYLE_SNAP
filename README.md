@@ -73,7 +73,6 @@ Proje şu anda sadece `candy.tflite` modelini desteklemektedir. Diğer modeller 
 ## 📬 Geliştirici
 
 Mehmet Karadana
-[LinkedIn](https://www.linkedin.com/in/mehmetkaradana) • [Upwork](https://www.upwork.com/freelancers/~mehmetkaradana)
 
 ---
 
